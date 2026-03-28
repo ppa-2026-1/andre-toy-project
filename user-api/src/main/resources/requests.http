@@ -1,0 +1,61 @@
+
+### Exemplo GET todos os tickets
+GET http://localhost:8080/api/v1/tickets
+
+### Exemplo GET ticket por id
+GET http://localhost:8080/api/v1/tickets/1
+
+### Exemplo POST para criar ticket
+POST http://localhost:8080/api/v1/tickets
+Content-Type: application/json
+
+{
+  "acao": "Abrir chamado",
+  "objeto": "Notebook",
+  "detalhes": "Notebook não liga",
+  "idCriador": 1,
+  "idDestinatario": 2,
+  "observadores": ["teste@email.com", "teste2@email.com"]
+}
+
+### Exemplo válido: Atualizar status para ANDAMENTO (com responsável)
+PATCH http://localhost:8080/tickets/1/status
+Content-Type: application/json
+
+{
+  "status": "ANDAMENTO",
+  "responsavelId": 2
+}
+
+### Exemplo válido: Cancelar ticket (com motivo)
+PATCH http://localhost:8080/tickets/1/status
+Content-Type: application/json
+
+{
+  "status": "CANCELADO",
+  "motivo": "Solicitação incorreta"
+}
+
+### Exemplo inválido: Cancelar ticket sem motivo
+PATCH http://localhost:8080/tickets/1/status
+Content-Type: application/json
+
+{
+  "status": "CANCELADO"
+}
+
+### Exemplo inválido: ANDAMENTO sem responsável
+PATCH http://localhost:8080/tickets/1/status
+Content-Type: application/json
+
+{
+  "status": "ANDAMENTO"
+}
+
+### Exemplo válido: Resolver ticket
+PATCH http://localhost:8080/tickets/1/status
+Content-Type: application/json
+
+{
+  "status": "RESOLVIDO"
+}
