@@ -1,24 +1,25 @@
 # USER API ================================================================
 
 @host=localhost:8080
+@endpoint=/api/v1/users
 
 ### TODOS OS USUÁRIOS
-GET /api/v1/users HTTP/1.1
-Host: localhost:8080
+GET {{endpoint}}
+Host: {{host}}
 Accept: application/json
 
 
 ### Get all users
 # @name= getAllUsers
 
-GET /api/v1/users HTTP/1.1
+GET {{endpoint}}
 Host: {{host}}
 Accept: application/json
 
 ### Create a new valid User
 # @name = createNewUser
 
-POST /api/v1/users HTTP/1.1
+POST {{endpoint}}
 Host: {{host}}
 Content-Type: application/json
 
@@ -35,7 +36,7 @@ Content-Type: application/json
 
 ### Create another valid User
 
-POST /api/v1/users HTTP/1.1
+POST {{endpoint}}
 Host: {{host}}
 Content-Type: application/json
 
@@ -54,7 +55,7 @@ Content-Type: application/json
 ### Try and create an invalid User
 # @name = tryCreateInvalidUser
 
-POST /api/v1/users HTTP/1.1
+POST {{endpoint}}
 Host: {{host}}
 Content-Type: application/json
 

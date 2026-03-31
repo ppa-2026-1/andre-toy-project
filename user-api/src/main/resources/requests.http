@@ -1,12 +1,18 @@
 
+@host=localhost:8080
+@endpoint=/api/v1/tickets
+
 ### Exemplo GET todos os tickets
-GET http://localhost:8080/api/v1/tickets
+GET {{endpoint}}
+Host: {{host}}
 
 ### Exemplo GET ticket por id
-GET http://localhost:8080/api/v1/tickets/1
+GET {{endpoint}}/1
+Host: {{host}}
 
 ### Exemplo POST para criar ticket
-POST http://localhost:8080/api/v1/tickets
+POST {{endpoint}}
+Host: {{host}}
 Content-Type: application/json
 
 {
@@ -18,8 +24,22 @@ Content-Type: application/json
   "observadores": ["teste@email.com", "teste2@email.com"]
 }
 
+### Exemplo POST para criar ticket sem destinatário
+POST {{endpoint}}
+Host: {{host}}
+Content-Type: application/json
+
+{
+  "acao": "Formatar",
+  "objeto": "Computador",
+  "detalhes": "Computador será vendido",
+  "idCriador": 1,
+  "observadores": ["teste3@email.com", "teste4@email.com"]
+}
+
 ### Exemplo válido: Atualizar status para ANDAMENTO (com responsável)
-PATCH http://localhost:8080/tickets/1/status
+PATCH {{endpoint}}/1/status
+Host: {{host}}
 Content-Type: application/json
 
 {
@@ -28,7 +48,8 @@ Content-Type: application/json
 }
 
 ### Exemplo válido: Cancelar ticket (com motivo)
-PATCH http://localhost:8080/tickets/1/status
+PATCH {{endpoint}}/1/status
+Host: {{host}}
 Content-Type: application/json
 
 {
@@ -37,7 +58,8 @@ Content-Type: application/json
 }
 
 ### Exemplo inválido: Cancelar ticket sem motivo
-PATCH http://localhost:8080/tickets/1/status
+PATCH {{endpoint}}/1/status
+Host: {{host}}
 Content-Type: application/json
 
 {
@@ -45,7 +67,8 @@ Content-Type: application/json
 }
 
 ### Exemplo inválido: ANDAMENTO sem responsável
-PATCH http://localhost:8080/tickets/1/status
+PATCH {{endpoint}}/1/status
+Host: {{host}}
 Content-Type: application/json
 
 {
@@ -53,7 +76,8 @@ Content-Type: application/json
 }
 
 ### Exemplo válido: Resolver ticket
-PATCH http://localhost:8080/tickets/1/status
+PATCH {{endpoint}}/1/status
+Host: {{host}}
 Content-Type: application/json
 
 {

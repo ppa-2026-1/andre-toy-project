@@ -1,6 +1,6 @@
 package com.example.demo.repository.entity;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,20 +16,10 @@ import jakarta.persistence.Table;
 public class Ticket {
 
   public enum StatusType {
-    PENDENTE("PENDENTE"),
-    ANDAMENTO("ANDAMENTO"),
-    RESOLVIDO("RESOLVIDO"),
-    CANCELADO("CANCELADO");
-
-    private String descricao;
-
-    StatusType(String descricao) {
-      this.descricao = descricao;
-    }
-
-    public String getDescricao() {
-      return descricao;
-    }
+    PENDENTE,
+    ANDAMENTO,
+    RESOLVIDO,
+    CANCELADO;
   }
 
   @Id
@@ -43,7 +33,7 @@ public class Ticket {
   private String objeto;
 
   @Column(nullable = false, length = 255)
-  private String status;
+  private StatusType status;
 
   @Column(columnDefinition = "TEXT")
   private String detalhes;
@@ -55,10 +45,10 @@ public class Ticket {
   private String observadores;
 
   @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
-  private LocalDateTime createdAt;
+  private Timestamp createdAt;
 
   @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
-  private LocalDateTime updatedAt;
+  private Timestamp updatedAt;
 
   @JoinColumn(name = "id_criador", nullable = false)
   @ManyToOne
@@ -97,14 +87,10 @@ public class Ticket {
   }
 
   public StatusType getStatus() {
-    return StatusType.valueOf(status);
+    return status;
   }
 
   public void setStatus(StatusType status) {
-    this.status = status.getDescricao();
-  }
-
-  public void setStatus(String status) {
     this.status = status;
   }
 
@@ -124,10 +110,6 @@ public class Ticket {
     this.motivo = motivo;
   }
 
-  public LocalDateTime getCreatedAt() {
-    return createdAt;
-  }
-
   public String getObservadores() {
     return observadores;
   }
@@ -136,15 +118,19 @@ public class Ticket {
     this.observadores = observadores;
   }
 
-  public void setCreatedAt(LocalDateTime createdAt) {
+  public Timestamp getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Timestamp createdAt) {
     this.createdAt = createdAt;
   }
 
-  public LocalDateTime getUpdatedAt() {
+  public Timestamp getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(LocalDateTime updatedAt) {
+  public void setUpdatedAt(Timestamp updatedAt) {
     this.updatedAt = updatedAt;
   }
 

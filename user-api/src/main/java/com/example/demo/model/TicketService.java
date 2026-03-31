@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -57,8 +58,8 @@ public class TicketService {
     ticket.setDestinatario(destinatario);
     ticket.setObservadores(
         String.join(",", newTicketDTO.observadores() != null ? newTicketDTO.observadores() : List.of()));
-    ticket.setCreatedAt(LocalDateTime.now());
-    ticket.setUpdatedAt(LocalDateTime.now());
+    ticket.setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
+    ticket.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
 
     return ticketRepository.save(ticket);
   }
@@ -96,7 +97,7 @@ public class TicketService {
     }
 
     ticket.setStatus(newStatus);
-    ticket.setUpdatedAt(LocalDateTime.now());
+    ticket.setUpdatedAt(Timestamp.valueOf(LocalDateTime.now()));
 
     if (newStatus == StatusType.ANDAMENTO) {
       User responsavel = userRepository.findById(responsavelId)
