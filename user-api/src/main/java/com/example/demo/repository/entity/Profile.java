@@ -15,66 +15,65 @@ import jakarta.persistence.Table;
 @Table(name = "profiles")
 public class Profile {
 
-    public enum AccountType {
-        FREE,
-        PROFESSIONAL,
-        ENTERPRISE
-    }
-    
-    @Id
-    private Integer id;
+  public enum AccountType {
+    FREE,
+    PROFESSIONAL,
+    ENTERPRISE
+  }
 
-    @MapsId
-    @OneToOne
-    @JoinColumn(name = "id")
-    @JsonBackReference
-    private User user;
+  @Id
+  private Integer id;
 
-    private String name;
-    private String company;
+  @MapsId
+  @OneToOne
+  @JoinColumn(name = "id")
+  @JsonBackReference
+  private User user;
 
-    @Enumerated(EnumType.STRING)
-    private AccountType type;
+  private String name;
+  private String company;
 
-    public Integer getId() {
-        return id;
-    }
+  @Enumerated(EnumType.STRING)
+  private AccountType type;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getCompany() {
-        return company;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setCompany(String company) {
-        this.company = company;
-    }
+  public String getCompany() {
+    return company;
+  }
 
-    public AccountType getType() {
-        return type;
-    }
+  public void setCompany(String company) {
+    this.company = company;
+  }
 
-    public void setType(AccountType type) {
-        this.type = type;
-    }
+  public AccountType getType() {
+    return type;
+  }
 
-    public User getUser() {
-        return user;
-    }
+  public void setType(AccountType type) {
+    this.type = type;
+  }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  public User getUser() {
+    return user;
+  }
 
-    
+  public void setUser(User user) {
+    this.user = user;
+  }
+
 }

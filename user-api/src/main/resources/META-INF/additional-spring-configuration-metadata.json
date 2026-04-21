@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "pagination.max-size",
+      "type": "java.lang.String",
+      "description": "A description for 'pagination.max-size'"
+    },
+    {
+      "name": "app.user.default.roles",
+      "type": "java.lang.String",
+      "description": "A description for 'app.user.default.roles'"
+    }
+  ]
+}

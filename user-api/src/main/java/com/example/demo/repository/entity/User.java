@@ -16,80 +16,76 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-@Entity  // annotation/metadado/stereotype
+@Entity // annotation/metadado/stereotype
 @Table(name = "users")
 public class User { // tabela users no banco de dados
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-    @Column(nullable = false, unique = true, length = 255)
-    private String email;
-    
-    @Column(nullable = false, length = 255)
-    private String password;
+  @Column(nullable = false, unique = true, length = 255)
+  private String email;
 
-    @Column(nullable = false, unique = true, length = 255)
-    private String handle;
+  @Column(nullable = false, length = 255)
+  private String password;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Profile profile;
+  @Column(nullable = false, unique = true, length = 255)
+  private String handle;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "users_roles", 
-        joinColumns = @JoinColumn(name = "user_id"), 
-        inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
+  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+  private Profile profile;
 
-    public Integer getId() {
-        return id;
-    }
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+  private Set<Role> roles = new HashSet<>();
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public String getPassword() {
+    return password;
+  }
 
-    public String getHandle() {
-        return handle;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    public void setHandle(String handle) {
-        this.handle = handle;
-    }
+  public String getHandle() {
+    return handle;
+  }
 
-    public Profile getProfile() {
-        return profile;
-    }
+  public void setHandle(String handle) {
+    this.handle = handle;
+  }
 
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
+  public Profile getProfile() {
+    return profile;
+  }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
+  public void setProfile(Profile profile) {
+    this.profile = profile;
+  }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
+  public Set<Role> getRoles() {
+    return roles;
+  }
+
+  public void setRoles(Set<Role> roles) {
+    this.roles = roles;
+  }
 
 }
