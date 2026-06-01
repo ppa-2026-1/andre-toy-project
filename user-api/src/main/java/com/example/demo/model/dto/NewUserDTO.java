@@ -15,18 +15,13 @@ import jakarta.validation.constraints.Size;
 
 public record NewUserDTO( // "bolsa de dados" -> representa o JSON
 
-    @Size(min = 5, max = 255, message = "O nome deve ter entre 5 e 255 caracteres") 
-    String name,
+    @Size(min = 5, max = 255, message = "O nome deve ter entre 5 e 255 caracteres") String name,
 
     String handle,
 
-    @Email(message = "O email não é válido") 
-    @UniqueUser 
-    String email,
+    @Email(message = "O email não é válido") @UniqueUser String email,
 
-    @NotBlank(message = "A senha não pode ser vazia") 
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-zA-Z]).{8,}$", message = "A senha deve ter pelo menos 8 caracteres e conter pelo menos uma letra e um número") 
-    String password,
+    @NotBlank(message = "A senha não pode ser vazia") @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-zA-Z]).{8,}$", message = "A senha deve ter pelo menos 8 caracteres e conter pelo menos uma letra e um número") String password,
 
     String company,
     Profile.AccountType type,

@@ -1,18 +1,33 @@
 # USER API ================================================================
 
 @host=localhost:8080
+# AuthController
+### Autenticar e receber um TOKEN
+POST /api/auth/login HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+    "username": "teste",
+    "password": "1234"
+}
+
+### Sair
+POST /api/auth/logout HTTP/1.1
+Host: localhost:8080
 
 ### TODOS OS USUÁRIOS
 GET /api/v1/users HTTP/1.1
 Host: localhost:8080
 Accept: application/json
 
-
-### Get all users
+### Get all users --- AUTENTICADO
 # @name= getAllUsers
+
 GET /api/v1/users HTTP/1.1
 Host: {{host}}
 Accept: application/json
+Authorization: Bearer nk-EhWH76pya6u7RsCqIbO9YAH52_SvSTHZTA67ChAc
 
 ### Create a new valid User
 # @name = createNewUser
@@ -35,6 +50,7 @@ Content-Type: application/json
 
 ### Try and create an invalid User
 # @name = tryCreateInvalidUser
+
 POST /api/v1/users HTTP/1.1
 Host: {{host}}
 Content-Type: application/json

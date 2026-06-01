@@ -14,7 +14,9 @@ import jakarta.validation.Payload;
 @Target(ElementType.FIELD)
 @Constraint(validatedBy = UniqueUserValidator.class)
 public @interface UniqueUser {
-    String message() default "O usuário com o e-mail especificado já existe";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
+  String message() default "O usuário com o e-mail especificado já existe";
+
+  Class<?>[] groups() default {};
+
+  Class<? extends Payload>[] payload() default {};
 }

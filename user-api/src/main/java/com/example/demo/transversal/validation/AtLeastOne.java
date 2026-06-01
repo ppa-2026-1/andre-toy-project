@@ -10,8 +10,6 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import jakarta.validation.Payload;
 
-
-
 // ao menos um
 
 // IA é extreme declarative programming
@@ -20,25 +18,19 @@ import jakarta.validation.Payload;
 @Target(ElementType.FIELD)
 @Constraint(validatedBy = AtLeastOneValidator.class)
 public @interface AtLeastOne {
-    String message() default "Deve ter pelo menos um item";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
+  String message() default "Deve ter pelo menos um item";
+
+  Class<?>[] groups() default {};
+
+  Class<? extends Payload>[] payload() default {};
 }
-
-
-
-
-
-
-
-
 
 class CPFValidator implements ConstraintValidator<CPF, String> {
 
-    @Override
-    public boolean isValid(String cpf, ConstraintValidatorContext context) {
-        return cpf.equals("000000000000");
-    }
+  @Override
+  public boolean isValid(String cpf, ConstraintValidatorContext context) {
+    return cpf.equals("000000000000");
+  }
 
 }
 
@@ -46,14 +38,14 @@ class CPFValidator implements ConstraintValidator<CPF, String> {
 @Target(ElementType.FIELD)
 @Constraint(validatedBy = CPFValidator.class)
 @interface CPF {
-    String message() default "Deve ser um CPF válido";
+  String message() default "Deve ser um CPF válido";
 
-    Class<?>[] groups() default {};
+  Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+  Class<? extends Payload>[] payload() default {};
 }
 
 class Cliente {
-    @CPF
-    String cpf;
+  @CPF
+  String cpf;
 }

@@ -1,4 +1,3 @@
-# andre-toy-projec
 
 ## DESCRIPTION
 
@@ -20,7 +19,6 @@ Object
 Ex.: Linguagem/Plataforma => UsuarioDAO, salvar, buscar, excluir, ... => DB, Arquivo, ..., RDBMS (SGBD, ex.: PostgreSQL).
 
 POO: Programação Orientada a Objetos
-
 - classes
 - atributos
 - métodos
@@ -30,8 +28,7 @@ POO: Programação Orientada a Objetos
 - composição
 
 Linguagem Persistente (SQL)
-
-- tabela
+- tabela 
 - coluna (campo)
 - linha ou registros
 - relacionamentos

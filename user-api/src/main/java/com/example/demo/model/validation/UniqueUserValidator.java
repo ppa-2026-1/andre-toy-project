@@ -8,18 +8,18 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 @Component
-public class UniqueUserValidator 
+public class UniqueUserValidator
     implements ConstraintValidator<UniqueUser, String> {
 
-    private final UserRepository userRepository;
+  private final UserRepository userRepository;
 
-    public UniqueUserValidator(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+  public UniqueUserValidator(UserRepository userRepository) {
+    this.userRepository = userRepository;
+  }
 
-    @Override
-    public boolean isValid(String email, ConstraintValidatorContext context) {
-        return userRepository.findByEmail(email).isEmpty();
-    }
-    
+  @Override
+  public boolean isValid(String email, ConstraintValidatorContext context) {
+    return userRepository.findByEmail(email).isEmpty();
+  }
+
 }
